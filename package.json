@@ -1,0 +1,31 @@
+{
+  "name": "noisy",
+  "version": "1.0.0",
+  "description": "Noisy",
+  "main": "noisy-1.0.0.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node tests/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binarymax/noisy.git"
+  },
+  "keywords": [
+    "noisy",
+    "noise",
+    "speech",
+    "audio",
+    "sound",
+    "listen",
+    "listener"
+  ],
+  "author": "Max Irwin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binarymax/noisy/issues"
+  },
+  "homepage": "https://github.com/binarymax/noisy#readme"
+}
