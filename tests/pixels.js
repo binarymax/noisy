@@ -27,6 +27,17 @@ var Pixels = (function(){
 		}
 	};
 
+	Canvas.prototype.get = function(x,y,buffer) {
+		var data = buffer||this.buffer.data;
+		var color = {};
+		var offset = (this.width * y + x) * 4;
+		color.r = data[offset  ];
+		color.g = data[offset+1];
+		color.b = data[offset+2];
+		color.a = data[offset+3];
+		return color;
+	};
+
 	Canvas.prototype.putCircle = function(x,y,color) {
 		this.context.beginPath();
 		this.context.fillStyle = rgba(color);
