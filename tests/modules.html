@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Test modules</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			*    { font-family: sans-serif; }
+			body { background-color: #accaee; }
+		</style>
+	</head>
+<body>
+
+	<h1>Test modules</h1>
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="../src/modules.js"></script>
+	<script type="text/javascript" src="../node_modules/mfcc/src/mfcc.js"></script>
+	<script type="text/javascript" src="../node_modules/dct/src/dct.js"></script>
+
+	<script type="text/javascript">
+		var sig = [1,1,1,1,1,1];
+		var coe = dct(sig);
+		console.log(coe);
+
+		var pwr = powerSpectrum([1,2,3,4,5,6]);
+		console.log(pwr);
+
+	</script>
+
+</body>
+</html>

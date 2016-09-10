@@ -6,16 +6,24 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
 			*    { font-family: sans-serif; }
-			body { background-color: #accaee; }
+			body { background-color: #acceff; }
 		</style>
 	</head>
 <body>
 
 	<h1>Noisy</h1>
 
+	<canvas id="mspect"></canvas>
+
+	<canvas id="spectro"></canvas>
+
 	<canvas id="stream"></canvas>
 
 	<!-- Scripts -->
+	<script type="text/javascript" src="../src/modules.js"></script>
+	<script type="text/javascript" src="../node_modules/mfcc/src/mfcc.js"></script>
+	<script type="text/javascript" src="../node_modules/dct/src/dct.js"></script>
+
 	<script type="text/javascript" src="../src/noisy.js"></script>
 	<script type="text/javascript" src="../src/mic.js"></script>
 	<script type="text/javascript" src="../src/model.js"></script>

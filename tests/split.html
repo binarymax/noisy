@@ -7,11 +7,39 @@
 		<style>
 			*    { font-family: sans-serif; }
 			body { background-color: #accaee; }
+			.setting {display:inline-block;margin-right:20px;}
+			.sample { border:2px solid #333; margin-top:10px;}
 		</style>
 	</head>
 <body>
 
 	<h1>Noisy</h1>
+
+	<section>
+		<div class="setting">
+			<label>tolerance <br/>
+				<input type="number" id="tolerance" />
+			</tabel>
+		</div>
+
+		<div class="setting">
+			<label>limit <br/>
+				<input type="number" id="limit" />
+			</tabel>
+		</div>
+
+		<div class="setting">
+			<label>tolerance total <br/>
+				<input type="number" id="tolsize" />
+			</tabel>
+		</div>
+
+		<div class="setting">
+			<label>gap size <br/>
+				<input type="number" id="gapsize" />
+			</tabel>
+		</div>
+	</section>
 
 	<canvas id="stream"></canvas>
 

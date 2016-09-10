@@ -1,9 +1,12 @@
-;(function(noisy) {
+;(function(noisy){
 	"use strict";
+
+	noisy.fftSize = 2048;
 
 	var context;
 	var analyze;
-	var analyser;
+	var freqanalyser;
+	var timeanalyser;
 	var microphone;
 
 	var listeners = [];
@@ -14,8 +17,12 @@
 
 	var onStream = function(stream) {
 		microphone = context.createMediaStreamSource(stream);
-		analyser = context.createAnalyser();
-		microphone.connect(analyser);
+		freqanalyser = context.createAnalyser();
+		timeanalyser = context.createAnalyser();
+		freqanalyser.fftSize=noisy.fftSize;
+		timeanalyser.fftSize=noisy.fftSize/2;
+		microphone.connect(freqanalyser);
+		microphone.connect(timeanalyser);
 		requestAnimationFrame(analyze);
 	};
 
@@ -23,11 +30,12 @@
 		console.error('No microphone!');
 	};
 
-	var analyzeFreqBatch = function() {
-		analyser.fftSize=2048;
-		var data = new Uint8Array(analyser.frequencyBinCount);
-		analyser.getByteFrequencyData(data);
-		listeners.forEach(function(l){l(data)});
+	var analyzeBatch = function() {
+		var freqdata = new Uint8Array(freqanalyser.frequencyBinCount);
+		var timedata = new Uint8Array(timeanalyser.fftSize);
+		freqanalyser.getByteFrequencyData(freqdata);
+		timeanalyser.getByteTimeDomainData(timedata);
+		listeners.forEach(function(l){l(freqdata,timedata)});
 		requestAnimationFrame(analyze);
 	};
 
@@ -41,7 +49,7 @@
 			context.createDelay = context.createDelayNode;
 			context.createScriptProcessor = context.createJavaScriptNode;
 
-			analyze = analyzeFreqBatch;
+			analyze = analyzeBatch;
 
 			navigator.getUserMedia( {audio: true}, onStream, onError);
 		}
